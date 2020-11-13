@@ -157,6 +157,57 @@
                     showLesson: true,
                     sortOrder:'',
                         },
+                        methods:{
+                    addToCart(lesson){
+                        lesson.quantity -= 1
+                        this.cart.push(lesson);
+                    },
+                    onlyNumbers(event) {      
+                    let keyCode = event.keyCode ? event.keyCode : event.which;
+                    if (keyCode < 49 || keyCode > 58) {
+                    event.preventDefault();
+                    }
+                },
+                    removeCart(lesson){
+                        this.cart.splice(this.cart.indexOf(lesson),1)
+                    },
+                    showCheckout(){
+                        this.showLesson = this.showLesson ? false : true;
+                    },
+                    submitForm(order){
+                        var name = document.getElementById('fName').nodeValue
+
+                        if(order.name === ''){
+                            alert("Enter Name");
+                        }else {
+                            if (order.mobile === ''){
+                                alert("Enter Mobile")
+                            }else{
+                                alert("Order Submitted")
+                            }
+                        }
+                    
+                    },
+
+                    canAddToCart(lesson){
+                        return lesson.spaces > this.cartCount(lesson);
+                    },
+                    cartCount(id){
+                        let count = 0;
+                        for(let i = 0; i < this.cart.length; i++){
+                            if (this.cart[i] === id){
+                                count++;
+                            }
+                        }return count;
+                    },
+                    sort(type){
+                        this.sortType = type;
+                    },
+                    sortDirection(type){
+                        this.sortOrder = type;
+                    }
+                },
         </script>
+        </body>
 
 </html>
