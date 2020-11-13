@@ -100,4 +100,45 @@
             
             </div>
 
+            <div v-else>
+                <h2>Enter Information</h2>
+                <form>
+                    <label>FirstName</label>
+                    <input type="text" v-model.text="order.name" id="fName">
+                    <label>Mobile</label>
+                    <input type="text" @keypress="onlyNumbers" v-model.text="order.mobile" id="mobile">
+                </form>
+            
+
+            <div>
+                <h2>Order Confirmation</h2>
+                <label class="form-control" readonly>Name: {{order.name}}</label>
+                <label class="form-control" readonly>Mobile: {{order.mobile}}</label>
+                <label class="form-control" readonly>Total: ${{total}}</label>
+                <button type="button" v-on:click="submitForm(order)">Place Order</button>
+            </div>
+                <h2>Cart</h2>
+                <button v-on:click='showCheckout' type="button">Edit Cart</button>
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Price</th>
+                        </tr>
+                    </thead>
+                    <div>
+                        <tr v-for="lesson in cart">
+                            <td>
+                                <p>{{lesson.subject}}</p>
+                            </td>
+                            <td>{{lesson.location}}</td>
+                            <td>${{lesson.price}}</td>
+                        </tr>
+                    </div>
+                </table>
+                </div>
+            </div>
+        </div>
+
 </html>
