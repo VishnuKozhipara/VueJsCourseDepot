@@ -46,5 +46,29 @@
                             <input class="form-check-input " type="radio"  name="orderRadio" id="dscRadio" @click="sortDirection('dsc')">
                             <label for="dscRadio">Descending</label>
                         </div>
+                        <p id = "sortError"></p>
+                    
+                        <div class="row">
+                            <div v-for="lesson in sorted">
+                                <main class = "ml-4">
+                                    <div class="card" style="width: 18rem;">
+                                        <img v-bind:src="lesson.image" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <p class="card-text">Subject: {{lesson.subject}}</p>
+                                            <p class="card-text">Professor: {{lesson.teacher}}</p>
+                                            <p class="card-text">Location: {{lesson.location}}</p>
+                                            <p class="card-text">Price: {{lesson.price}}</p>
+                                            <p class="card-text">Spaces: {{lesson.spaces - cartCount(lesson)}}</p>
+                                      
+                                <button v-on:click="addToCart(lesson)" v-if="canAddToCart(lesson)" class="btn btn-success">Add to cart</button>
+                                <button v-else type="button" disabled = 'disabled' class="btn btn-disable">Add to Cart</button>
+                                <span v-if = 'lesson.spaces === cartCount(lesson)'>Sold Out!</span>
+                                <span v-else if = "lesson.spaces - cartCount(lesson) < 5">Only {{lesson.spaces - cartCount(lesson)}} left!!</span>
+                                <span v-else>Buy Now !</span>
+                                    </div>
+                                </div>
+                        </main>
+                    </div>
+                </div>
 
 </html>
