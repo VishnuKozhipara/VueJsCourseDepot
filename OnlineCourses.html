@@ -19,33 +19,33 @@
             </div>
 
             <div v-if='showLesson'>
-                     <p>Category</p>
-                     <div class="form-check">
-                         <input class="form-check-input " type="radio"  name="categoryRadio" id="subjectRadio" @click="sort('subject')">
-                         <label for="subjectRadio">Subject</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input " type="radio"  name="categoryRadio" id="priceRadio" @click="sort('price')">
-                            <label for="priceRadio">Price</label>
-                        </div>
-                        <div>
-                            <input class="form-check-input " type="radio"  name="categoryRadio" id="locationRadio" @click="sort('location')">
-                            <label for="locationRadio">Location</label>
-                        </div>
-                        <div>
-                            <input class="form-check-input " type="radio" name="categoryRadio" id="spacesRadio" @click="sort('spaces')">
-                            <label for="spacesRadio">Spaces</label>
-                        </div>
-                        
-                        <p>Order By:</p>
-                        <div>
-                            <input class="form-check-input " type="radio" name="orderRadio" id="ascRadio" @click="sortDirection('asc')">
-                            <label for="ascRadio">Ascending</label>
-                        </div>
-                        <div>
-                            <input class="form-check-input " type="radio"  name="orderRadio" id="dscRadio" @click="sortDirection('dsc')">
-                            <label for="dscRadio">Descending</label>
-                        </div>
+                    
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle"
+                            type="button" id="dropdownMenu1" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                      Category
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                      <a class="dropdown-item" @click="sort('subject')">Subject</a>
+                      <a class="dropdown-item" @click="sort('price')">Price</a>
+                      <a class="dropdown-item" @click="sort('location')">Location</a>
+                      <a class="dropdown-item" @click="sort('spaces')">Spaces</a>
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle"
+                            type="button" id="dropdownMenu1" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                      Sort By:
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                      <a class="dropdown-item" @click="sortDirection('asc')">Ascending</a>
+                      <a class="dropdown-item" @click="sortDirection('dsc')">Descending</a>
+                    </div>
+                  </div>
                         <p id = "sortError"></p>
                     
                         <div class="row">
